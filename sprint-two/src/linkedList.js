@@ -6,17 +6,19 @@ var LinkedList = function(){
   list.addToTail = function(value){
     var newNode = Node(value);
     // if list doesn't exist
-    if(!list) {
+    if(!list.head) {
       list.head = newNode;
       list.tail = newNode;
     // if the list only has one node
     } else if(list.head === list.tail) {
-      this.tail = newNode;
-      this.head.next = this.tail;
+      list.tail = newNode;
+      list.head.next = this.tail;
     // if the list has more than one node
     } else {
-      this.tail = newNode;
+      list.tail.next = newNode;
+      list.tail = newNode;
     }
+    return newNode;
   };
 
   list.removeHead = function(){
@@ -38,8 +40,24 @@ var LinkedList = function(){
   };
 
   list.contains = function(target){
-  };
+      var currentNode = list.head;
+      var found = false;
 
+      while ( currentNode !== list.tail) {
+        if (currentNode.value === target) {
+          found = true;
+        }
+                currentNode = currentNode.next;
+      }
+
+      if (currentNode === list.tail && list.tail !== null) {
+        if (currentNode.value === target) {
+          found = true;
+        }
+      }
+
+      return found;
+    };
   return list;
 };
 

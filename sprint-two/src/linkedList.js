@@ -47,7 +47,7 @@ var LinkedList = function(){
         if (currentNode.value === target) {
           found = true;
         }
-                currentNode = currentNode.next;
+        currentNode = currentNode.next;
       }
 
       if (currentNode === list.tail && list.tail !== null) {
